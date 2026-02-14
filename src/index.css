@@ -1,9 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, system-ui, sans-serif;
+
+  --color-valentine-red: #e31b23;
+  --color-soft-pink: #ffe4e1;
+  --color-deep-pink: #ff1493;
+}
 
 @layer base {
   body {
-    @apply bg-soft-pink text-gray-900;
+    @apply antialiased overflow-hidden;
   }
+}
+
+.particle {
+  pointer-events: none;
 }

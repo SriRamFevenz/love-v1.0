@@ -1,22 +1,22 @@
-export default function App() {
+import React, { useState } from 'react';
+import Landing from './components/Landing';
+import Memories from './components/Memories';
+import Question from './components/Question';
+import Final from './components/Final';
+
+function App() {
+  const [stage, setStage] = useState(0);
+
+  const nextStage = () => setStage(prev => prev + 1);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-soft-pink">
-      <div className="bg-white p-10 rounded-2xl shadow-xl text-center border-2 border-valentine-red/20">
-        <h1 className="text-5xl font-bold text-valentine-red mb-4">
-          Valentine's Love
-        </h1>
-        <p className="text-gray-600 text-lg mb-8">
-          Project Initialized Successfully ❤️
-        </p>
-        <div className="space-x-4">
-          <button className="bg-valentine-red text-white px-6 py-2 rounded-full hover:bg-deep-pink transition-colors">
-            Get Started
-          </button>
-          <button className="px-6 py-2 rounded-full border border-valentine-red text-valentine-red hover:bg-valentine-red/5 transition-colors">
-            Documentation
-          </button>
-        </div>
-      </div>
+    <div className="font-sans text-gray-900 bg-white">
+      {stage === 0 && <Landing onNext={nextStage} />}
+      {stage === 1 && <Memories onNext={nextStage} />}
+      {stage === 2 && <Question onNext={nextStage} />}
+      {stage === 3 && <Final />}
     </div>
-  )
+  );
 }
+
+export default App;
