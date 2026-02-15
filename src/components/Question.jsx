@@ -1,16 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
+
 
 const Question = ({ onNext }) => {
     const [noCount, setNoCount] = useState(0);
-    const noBtnRef = useRef(null);
-    const yesBtnRef = useRef(null);
+    const [noBtnPos, setNoBtnPos] = useState({ x: 0, y: 0 });
 
     const handleNoHover = () => {
-        const btn = noBtnRef.current;
-        if (!btn) return;
-
         // Increment count to change text/size
         setNoCount(prev => prev + 1);
 
@@ -18,12 +14,7 @@ const Question = ({ onNext }) => {
         const x = Math.random() * (window.innerWidth - 200) - (window.innerWidth / 2 - 100);
         const y = Math.random() * (window.innerHeight - 200) - (window.innerHeight / 2 - 100);
 
-        gsap.to(btn, {
-            x: x,
-            y: y,
-            duration: 0.3,
-            ease: "power2.out"
-        });
+        setNoBtnPos({ x, y });
     };
 
     const getNoText = () => {
@@ -65,12 +56,14 @@ const Question = ({ onNext }) => {
                     </motion.button>
 
                     <motion.button
-                        ref={noBtnRef}
                         onMouseEnter={handleNoHover}
                         onClick={handleNoHover} // For mobile tap
                         animate={{
+                            x: noBtnPos.x,
+                            y: noBtnPos.y,
                             scale: Math.max(0.6, 1 - (noCount * 0.1)), // Shrinks
                         }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
                         className="bg-white text-gray-500 px-8 py-3 rounded-full text-xl font-medium shadow-md border border-gray-200"
                     >
                         {getNoText()}
