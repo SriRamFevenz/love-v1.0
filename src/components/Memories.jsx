@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import memory1 from '../assets/memory1.jpg';
+import memory2 from '../assets/memory2.jpg';
+import memory3 from '../assets/memory3.jpg';
 
 const memories = [
-    { img: "https://images.openai.com/static-rsc-3/se_56RAyGDZ4NhN6KCrbt64AI1qV9_avlyNyGt6VrlklPpauM1Xt3Q-Dz1NuiwDtRwuPHwru7gLZH6xVwBSGWwSfx2VxSMyyOH_yLJEEBDM?purpose=fullsize&v=1", text: "The day everything changed." },
-    { img: "https://images.openai.com/static-rsc-3/ed0H2yaq1bRE5lVeqdrbflTMs5fJGsZmHxij3x03_9HAgTHCdgPKAqg-fPlxksV2FSJH5PEoCNiQdamq6pHjm0SsRkpz8nTl9G0WdAB8lCs?purpose=fullsize&v=1", text: "You laughing at nothing." },
-    { img: "https://images.openai.com/static-rsc-3/DkGqQLUGaq0z5PMtNW7XTsdGtZT7ALswFPBeBN3CaNFbXv3mPlV7ceEX0GH0OrYhlMTkZX5npsCkV8Xx6-fpAaO1NS3CmEWDtr93-6wh9S0?purpose=fullsize&v=1", text: "My favorite human." },
+    { img: memory1, text: "The day everything changed." },
+    { img: memory2, text: "You laughing at nothing." },
+    { img: memory3, text: "My favorite human." },
 ];
 
 const Memories = ({ onNext }) => {
