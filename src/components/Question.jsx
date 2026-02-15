@@ -2,9 +2,10 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 
-const Question = ({ onNext }) => {
+const Question = ({ onNext, content }) => {
     const [noCount, setNoCount] = useState(0);
     const [noBtnPos, setNoBtnPos] = useState({ x: 0, y: 0 });
+    const { text, yesBtn, noBtnMessages } = content.question;
 
     const handleNoHover = () => {
         // Increment count to change text/size
@@ -18,15 +19,7 @@ const Question = ({ onNext }) => {
     };
 
     const getNoText = () => {
-        const messages = [
-            "No 😅",
-            "Are you sure?",
-            "Think again.",
-            "Last chance!",
-            "Really?",
-            "You can't escape ❤️"
-        ];
-        return messages[Math.min(noCount, messages.length - 1)];
+        return noBtnMessages[Math.min(noCount, noBtnMessages.length - 1)];
     };
 
     return (
@@ -38,7 +31,7 @@ const Question = ({ onNext }) => {
                 className="text-center z-10"
             >
                 <h2 className="text-4xl md:text-6xl font-bold text-valentine-red mb-12 drop-shadow-sm">
-                    Will you be my Valentine?
+                    {text}
                 </h2>
 
                 <div className="flex gap-8 items-center justify-center relative">
@@ -52,7 +45,7 @@ const Question = ({ onNext }) => {
                         }}
                         className="bg-valentine-red text-white px-8 py-3 rounded-full text-xl font-bold shadow-lg hover:shadow-xl transition-all"
                     >
-                        Yes ❤️
+                        {yesBtn}
                     </motion.button>
 
                     <motion.button

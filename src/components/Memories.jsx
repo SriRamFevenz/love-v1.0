@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import memory1 from '../assets/memory1.jpg';
-import memory2 from '../assets/memory2.jpg';
-import memory3 from '../assets/memory3.jpg';
 
-const memories = [
-    { img: memory1, text: "The day everything changed." },
-    { img: memory2, text: "You laughing at nothing." },
-    { img: memory3, text: "My favorite human." },
-];
-
-const Memories = ({ onNext }) => {
+const Memories = ({ onNext, content }) => {
     const [current, setCurrent] = useState(0);
+    const memories = content.memories;
 
     // Auto-advance
     React.useEffect(() => {
@@ -22,7 +14,7 @@ const Memories = ({ onNext }) => {
         }, 4000); // 4 seconds per slide
 
         return () => clearInterval(timer);
-    }, [current]);
+    }, [current, memories.length]);
 
     const handleNext = () => {
         if (current < memories.length - 1) {
@@ -40,21 +32,6 @@ const Memories = ({ onNext }) => {
 
     return (
         <div className="h-screen w-full bg-black flex flex-col items-center justify-center overflow-y-auto scrollbar-hide md:scrollbar-default relative">
-            <style>{`
-                ::-webkit-scrollbar {
-                    width: 10px;
-                }
-                ::-webkit-scrollbar-track {
-                    background: #000; 
-                }
-                ::-webkit-scrollbar-thumb {
-                    background: #333; 
-                    border-radius: 5px;
-                }
-                ::-webkit-scrollbar-thumb:hover {
-                    background: #555; 
-                }
-            `}</style>
 
             {/* Background Blur */}
             <div

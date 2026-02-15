@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 
-const Landing = ({ onNext }) => {
+const Landing = ({ onNext, content }) => {
     const containerRef = useRef(null);
     const titleRef = useRef(null);
+    const { title, subtitle, buttonText } = content.landing;
 
     // Generate particles only once
     const particles = React.useMemo(() => {
@@ -55,11 +56,17 @@ const Landing = ({ onNext }) => {
                 className="text-center z-10"
             >
                 <h1 className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-sm font-sans tracking-tight">
-                    Hey, Beautiful...
+                    {title}
                 </h1>
-                <p className="text-xl md:text-2xl font-light opacity-90 mb-12">
-                    I built something small.
+                <p className="text-xl md:text-2xl font-light opacity-90 mb-8">
+                    {subtitle}
                 </p>
+
+                {content.senderName && (
+                    <p className="text-lg font-medium opacity-80 mb-12 italic">
+                        From: {content.senderName} ❤️
+                    </p>
+                )}
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -67,7 +74,7 @@ const Landing = ({ onNext }) => {
                     onClick={onNext}
                     className="bg-white text-[#ff9a9e] px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-shadow"
                 >
-                    Start ❤️
+                    {buttonText}
                 </motion.button>
             </motion.div>
         </div>
