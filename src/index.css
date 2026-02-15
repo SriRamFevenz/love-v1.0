@@ -10,7 +10,7 @@
 
 @layer base {
   body {
-    @apply antialiased overflow-hidden;
+    @apply antialiased overflow-hidden h-screen bg-black;
   }
 }
 

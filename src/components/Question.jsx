@@ -43,7 +43,7 @@ const Question = ({ onNext }) => {
 
                 <div className="flex gap-8 items-center justify-center relative">
                     <motion.button
-                        ref={yesBtnRef}
+
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={onNext}

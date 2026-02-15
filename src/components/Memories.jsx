@@ -37,7 +37,7 @@ const Memories = ({ onNext }) => {
 
     return (
         <div className="h-screen w-full bg-black flex flex-col items-center justify-center overflow-y-auto scrollbar-hide md:scrollbar-default relative">
-            <style jsx>{`
+            <style>{`
                 ::-webkit-scrollbar {
                     width: 10px;
                 }

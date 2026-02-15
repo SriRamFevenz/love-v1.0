@@ -10,7 +10,7 @@ function App() {
   const nextStage = () => setStage(prev => prev + 1);
 
   return (
-    <div className="font-sans text-gray-900 bg-white">
+    <div className="font-sans text-gray-900 bg-white h-screen w-full overflow-hidden">
       {stage === 0 && <Landing onNext={nextStage} />}
       {stage === 1 && <Memories onNext={nextStage} />}
       {stage === 2 && <Question onNext={nextStage} />}
