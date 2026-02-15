@@ -55,7 +55,8 @@ const Editor = () => {
     };
 
     const copyToClipboard = () => {
-        const url = `${window.location.origin}/${createdId}`;
+        // Base path needed for GitHub Pages
+        const url = `${window.location.origin}/love-v1.0/#/${createdId}`;
         navigator.clipboard.writeText(url);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
